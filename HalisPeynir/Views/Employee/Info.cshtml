@@ -1,0 +1,48 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">FEEDS</h5>
+            <ul class="feeds">
+                <li>
+                    ID: @Model.EmployeeID
+                </li>
+                <li>
+                    Name and Second name: @Model.NameAndSecName
+                </li>
+                <li>
+                    Surname: @Model.Surname
+                </li>
+                <li>
+                    DOB: @Model.DOB
+                </li>
+                <li>
+                    Gender:@Model.Gender.GenderName
+                </li>
+                <li>
+                    JobTitle: @Model.JobTitle.JobTitleName
+                </li>
+                <li>
+                    Shift: @Model.Shift.ShiftName
+                </li>
+
+
+            </ul>
+            <div class="button-group">
+                <a asp-controller="Employee" asp-action="Edit" asp-route-id="@Model.EmployeeID" class="btn waves-effect waves-light btn-lg btn-rounded btn-warning">Edit</a>
+                <a asp-controller="Employee" asp-action="Delete" asp-route-id="@Model.EmployeeID" class="btn waves-effect waves-light btn-lg btn-rounded btn-dark">Delete</a>
+                <a asp-controller="Employee" asp-action="List" class="btn waves-effect waves-light btn-lg btn-rounded btn-info">Back to list</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

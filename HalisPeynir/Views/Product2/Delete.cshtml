@@ -1,0 +1,25 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 col-md-12 mt-4">
+    <!-- Card -->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@Model.ProductID ID @Model.Name</h4>
+            <p class="card-text">You sure u wants to delete it?</p>
+
+            <div class="button-group">
+                <form asp-controller="Product2" asp-action="RealDelete" asp-route-id="@Model.ProductID" method="post">
+                    <button type="submit" class="btn waves-effect waves-light btn-lg btn-rounded btn-danger">Delete</button>
+                    <a asp-controller="Product2" asp-action="List" asp-route-id="@Model.ProductID" class="btn waves-effect waves-light btn-lg btn-rounded btn-dark">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Card -->
+</div>
+
+

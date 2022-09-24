@@ -1,0 +1,82 @@
+﻿@model HalisPeynir.ViewModel.EmployeeViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit Employee</h4>
+                <h6 class="card-subtitle"> You can edit your employee</h6>
+                <form class="mt-4" asp-controller="Employee" asp-action="Edit" method="post">
+                    <div class="form-group">
+                        <label>Name and Surname</label>
+                        <input type="text" name="NameAndSecName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="@Model.Employee.NameAndSecName">
+                    </div>
+                    <div class="form-group">
+                        <label>Surname</label>
+                        <input type="text" name="Surname" class="form-control" id="exampleInputPassword1" value="@Model.Employee.Surname">
+                    </div>
+                    <div class="form-group">
+                        <label>Date of birth</label>
+                        <input type="date" name="DOB" class="form-control" id="exampleInputPassword1" value="@(Model.Employee.DOB.Year!=1?Model.Employee.DOB.ToString("yyyy-MM-dd"):"")">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-month-input2" class="col-2 col-form-label">Gender</label>
+                        <div class="col-10">
+                            <select name="GenderID">
+                                <option selected value="@Model.Employee.Gender.GenderName">Choose...</option>
+
+                                @foreach (Gender gender in Model.GenderList)
+                                {
+                                    <option selected="@(gender.GenderID == Model.Employee.GenderID)" value="@gender.GenderID">@gender.GenderName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-month-input2" class="col-2 col-form-label">Job </label>
+                        <div class="col-10">
+                            <select name="JobTitleID">
+                                <option selected value="@Model.Employee.JobTitle.JobTitleName">Choose...</option>
+
+                                @foreach (JobTitle jobTitle in Model.JobTitleList)
+                                {
+                                    <option selected="@(jobTitle.JobTitleID == Model.Employee.JobTitleID)" value="@jobTitle.JobTitleID">@jobTitle.JobTitleName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-month-input2" class="col-2 col-form-label">Shift</label>
+                        <div class="col-10">
+                            <select name="ShiftID">
+                                <option selected value="@Model.Employee.Shift.ShiftName">Choose...</option>
+
+                                @foreach (Shift shift in Model.ShiftList)
+                                {
+                                    <option selected="@(shift.ShiftID== Model.Employee.ShiftID)" value="@shift.ShiftID">@shift.ShiftName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>Update</button>
+                            <a asp-controller="Employee" asp-action="List" class="btn btn-dark">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

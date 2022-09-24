@@ -1,0 +1,73 @@
+﻿@model List<Employee>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">Products</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <a asp-controller="Employee" asp-action="Add" method="post" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+        </div>
+    </div>
+</div>
+<!-- row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table full-color-table full-danger-table hover-table">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Employee NameandSecondName</th>
+                                <th>Employee Surname</th>
+                                <th>Employee DOB</th>
+                                <th>Employee JobTitle</th>
+                                <th>Employee Gender</th>
+                                <th>Employee Shift</th>
+                                <th>Employee Work Status</th>
+                                <th>Others</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Employee employee in Model)
+                            {
+                                <tr>
+                                    <td>@employee.EmployeeID</td>
+                                    <td>@employee.NameAndSecName</td>
+                                    <td>@employee.Surname</td>
+                                    <td>@employee.DOB.ToLongDateString()</td>
+                                    <td>@employee.Gender.GenderName</td>
+                                    <td>@employee.JobTitle.JobTitleName</td>
+                                    <td>@employee.Shift.ShiftName</td>
+                                    <td>@employee.WorkStatus</td>
+                                    <td>
+                                        <a class="like" asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.EmployeeID" title="Edit">
+                                            <i class="fas fa-edit fa-lg"></i>
+                                        </a>
+
+
+                                        <a class="like" asp-controller="Employee" asp-action="Info" asp-route-id="@employee.EmployeeID" title="İnfo">
+                                            <i class="fas fa-info-circle fa-lg"></i>
+                                        </a>
+
+
+                                        <a class="like" asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.EmployeeID" title="Delete">
+                                            <i class="fas fa-trash fa-lg"></i>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

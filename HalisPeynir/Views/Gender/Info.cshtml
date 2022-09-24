@@ -1,0 +1,33 @@
+﻿@model Gender
+@{
+    ViewData["Title"] = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">FEEDS</h5>
+            <ul class="feeds">
+                <li>
+                    ID: @Model.GenderID
+                </li>
+                <li>
+                    URUN ADI: @Model.GenderName
+                </li>
+
+
+            </ul>
+
+            <div class="button-group">
+                <a asp-controller="Gender" asp-action="Edit" asp-route-id="@Model.GenderID" class="btn waves-effect waves-light btn-lg btn-rounded btn-warning">DÜZENLE</a>
+                <a asp-controller="Gender" asp-action="Delete" asp-route-id="@Model.GenderID" class="btn waves-effect waves-light btn-lg btn-rounded btn-dark">SİL</a>
+                <a asp-controller="Gender" asp-action="List" class="btn waves-effect waves-light btn-lg btn-rounded btn-info">LİSTEYE DÖN</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

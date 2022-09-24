@@ -1,0 +1,34 @@
+﻿@model Servicee
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit Service</h4>
+                <h6 class="card-subtitle"> You can edit your service</h6>
+                <form class="mt-4" asp-controller="Servicee" asp-action="Edit" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" name="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" value="@Model.Name">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Price</label>
+                        <input type="number" name="Price" class="form-control" id="exampleInputPassword1" placeholder="Price" value="@Model.Price">
+                    </div>
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>Edit</button>
+                            <a asp-controller="Servicee" asp-action="List" class="btn btn-dark">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
