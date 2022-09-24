@@ -1,6 +1,10 @@
 ﻿@model Employee
 
 @{
+    string message = (Model.WorkStatus == true ? message = "Working":message = "Not Working");
+}
+
+@{
     ViewData["Title"] = "Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -28,9 +32,14 @@
                 <li>
                     JobTitle: @Model.JobTitle.JobTitleName
                 </li>
-                <li>
+                <li>    
                     Shift: @Model.Shift.ShiftName
                 </li>
+                <li>
+                    Work Status: @message
+                </li>
+
+
 
 
             </ul>

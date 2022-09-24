@@ -32,9 +32,7 @@ namespace HalisPeynir.Models
         public int JobTitleID { get; set; }
 
         [Required(ErrorMessage = "{0} must be filled."), Display(Name = "Shift"), Range(1, 99, ErrorMessage = "{0} must be chosen")]
-        public int ShiftID { get; set; }
-
-        [Required(ErrorMessage = "{0} must be filled."), Display(Name = "Work Status")]
+        public int ShiftID { get; set; } 
         public bool WorkStatus { get; set; }
 
 

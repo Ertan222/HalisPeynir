@@ -37,6 +37,8 @@
                         <tbody>
                             @foreach (Employee employee in Model)
                             {
+                                string message = (employee.WorkStatus == true ? message = "Working": message = "Not Working");
+                                
                                 <tr>
                                     <td>@employee.EmployeeID</td>
                                     <td>@employee.NameAndSecName</td>
@@ -45,7 +47,7 @@
                                     <td>@employee.Gender.GenderName</td>
                                     <td>@employee.JobTitle.JobTitleName</td>
                                     <td>@employee.Shift.ShiftName</td>
-                                    <td>@employee.WorkStatus</td>
+                                    <td>@message</td>
                                     <td>
                                         <a class="like" asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.EmployeeID" title="Edit">
                                             <i class="fas fa-edit fa-lg"></i>
