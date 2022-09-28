@@ -1,7 +1,7 @@
 ﻿@model Employee
 
 @{
-    string message = (Model.WorkStatus == true ? message = "Working":message = "Not Working");
+    string message = (Model.WorkStatus? message = "Working":message = "Not Working");
 }
 
 @{

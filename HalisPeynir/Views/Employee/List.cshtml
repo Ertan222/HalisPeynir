@@ -37,7 +37,7 @@
                         <tbody>
                             @foreach (Employee employee in Model)
                             {
-                                string message = (employee.WorkStatus == true ? message = "Working": message = "Not Working");
+                                string message = (employee.WorkStatus? message = "Working": message = "Not Working");
                                 
                                 <tr>
                                     <td>@employee.EmployeeID</td>

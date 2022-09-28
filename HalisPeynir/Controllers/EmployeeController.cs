@@ -64,16 +64,26 @@ namespace HalisPeynir.Controllers
         }
         public async Task<IActionResult> Info(int id)
         {
-            Employee selectedEmployeeViewModel= await _context.Employees.Include(a => a.Gender).
+            Employee selectedEmployee= await _context.Employees.Include(a => a.Gender).
                 Include(a => a.JobTitle).Include(a => a.Shift).
                 FirstOrDefaultAsync(a => a.EmployeeID == id);
+
+            if (selectedEmployee != null)
+            {
+                return NotFound();
+            }
             
-            return View(selectedEmployeeViewModel);
+            return View(selectedEmployee);
         }
         public async Task<IActionResult> Delete(int id)
         {
             Employee selectedEmployee = await _context.Employees.Include(a => a.Gender).
                 Include(a => a.JobTitle).Include(a => a.Shift).FirstOrDefaultAsync(a => a.EmployeeID == id);
+
+            if (selectedEmployee != null)
+            {
+                return NotFound();
+            }
 
             return View(selectedEmployee);
         }
@@ -96,7 +106,12 @@ namespace HalisPeynir.Controllers
             selectedEmployeeViewModel.JobTitleList = await _context.JobTitles.ToListAsync();
             selectedEmployeeViewModel.GenderList = await _context.Genders.ToListAsync();
             selectedEmployeeViewModel.ShiftList= await _context.Shifts.ToListAsync();
-            
+
+            if (selectedEmployeeViewModel!= null)
+            {
+                return NotFound();
+            }
+
 
             return View(selectedEmployeeViewModel);
         }

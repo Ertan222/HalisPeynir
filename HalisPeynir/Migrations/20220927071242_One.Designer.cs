@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HalisPeynir.Migrations
 {
     [DbContext(typeof(HalisPeynirDBContext))]
-    [Migration("20220924110637_One")]
+    [Migration("20220927071242_One")]
     partial class One
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
